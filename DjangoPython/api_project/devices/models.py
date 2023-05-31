@@ -1,16 +1,21 @@
+#Import da biblioteca dos modelos, presente no Django
 from django.db import models
-# Create your models here.
-class Device(models.Model):
-    name = models.CharField(max_length=100)
+# Criação dos modelos.
+
+#Criação do Endpoint do modelo do dispositivo, onde exige o nome e mac_andress
+class Dispositivo(models.Model):
+    nome = models.CharField(max_length=100)
     mac_address = models.CharField(max_length=17)
 
     def __str__(self):
         return self.name
 
-class DataEntry(models.Model):
-    value = models.FloatField()
-    date_time = models.DateTimeField()
-    device = models.ForeignKey(Device, on_delete=models.CASCADE)
+
+#Criação do Endpoint do modelo dos dados de entrada na nossa base
+class DadoEntrada(models.Model):
+    valor = models.FloatField()
+    data_hora = models.DateTimeField()
+    Dispositivo = models.ForeignKey(Dispositivo, on_delete=models.CASCADE)
 
     def __str__(self):
         return str(self.value)
