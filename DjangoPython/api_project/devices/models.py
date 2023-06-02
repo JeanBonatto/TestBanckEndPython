@@ -15,7 +15,7 @@ class Dispositivo(models.Model):
 class DadoEntrada(models.Model):
     valor = models.FloatField()
     data_hora = models.DateTimeField()
-    Dispositivo = models.ForeignKey(Dispositivo, on_delete=models.CASCADE)
+    dispositivo = models.ForeignKey(Dispositivo, on_delete=models.CASCADE)
 
     def __str__(self):
         return str(self.value)
